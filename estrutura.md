@@ -1,3 +1,5 @@
+https://sequelize.org/master/manual/data-types.html
+
 estrutura pm2
 
 tudo está voltando pelo bin/www.js, sendo assim qualquer rota deve ter o export no final
@@ -17,3 +19,4 @@ node_modules/.bin/sequelize db:migrate
 
 drop tables migration
 node_modules/.bin/sequelize db:migrate:undo
+node_modules/.bin/sequelize db:migrate:undo:all

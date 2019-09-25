@@ -46,13 +46,13 @@ module.exports = {
         type: Sequelize.STRING(14),
       },
       telefone_1_id_grupo_telefone_app: {
-        type: Sequelize.STRING(11),
+        type: Sequelize.INTEGER,
       },
       telefone_2_id_grupo_telefone_app: {
-        type: Sequelize.STRING(11),
+        type: Sequelize.INTEGER,
       },
       telefone_3_id_grupo_telefone_app: {
-        type: Sequelize.STRING(11),
+        type: Sequelize.INTEGER,
       },
       status_online: {
         type: Sequelize.BOOLEAN,
@@ -60,9 +60,11 @@ module.exports = {
       },
       ativo: {
         type: Sequelize.BOOLEAN,
+        defaultValue: 0
       },
       congelado: {
         type: Sequelize.BOOLEAN,
+        defaultValue: 0
       },
       deletado: {
         type: Sequelize.BOOLEAN,
@@ -79,6 +81,56 @@ module.exports = {
         type: Sequelize.STRING(200)
       }
     })
+    .then(() => queryInterface.addConstraint('usuario', ['id_grupo_usuario'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_id_grupo_usuario', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'grupo_usuario',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
+    .then(() => queryInterface.addConstraint('usuario', ['id_tipo_usuario'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_id_tipo_usuario', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'tipo_usuario',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
+    .then(() => queryInterface.addConstraint('usuario', ['telefone_1_id_grupo_telefone_app'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_grupo_telefone_app_1', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'grupo_telefone_app',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
+    .then(() => queryInterface.addConstraint('usuario', ['telefone_2_id_grupo_telefone_app'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_grupo_telefone_app_2', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'grupo_telefone_app',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
+    .then(() => queryInterface.addConstraint('usuario', ['telefone_3_id_grupo_telefone_app'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_grupo_telefone_app_3', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'grupo_telefone_app',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
   },
 
   down: (queryInterface, Sequelize) => {

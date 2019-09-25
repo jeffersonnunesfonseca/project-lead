@@ -25,13 +25,22 @@ module.exports = {
       },
       deletado: {
         type: Sequelize.BOOLEAN,
-        defaultValue: 0
       },
       qtd_lead: {
         type: Sequelize.INTEGER,
       }
 
     })
+    .then(() => queryInterface.addConstraint('plano_lead', ['id_grupo_plano'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_id_grupo_plano', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'grupo_plano',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
   },
 
   down: (queryInterface, Sequelize) => {

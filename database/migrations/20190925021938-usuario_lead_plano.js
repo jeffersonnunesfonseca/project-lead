@@ -25,10 +25,29 @@ module.exports = {
       },
       deletado: {
         type: Sequelize.BOOLEAN,
-        defaultValue: 0
       },
 
     })
+    .then(() => queryInterface.addConstraint('usuario_lead_plano', ['id_usuario'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_id_usuario', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'usuario',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
+    .then(() => queryInterface.addConstraint('usuario_lead_plano', ['id_plano_lead'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_id_plano_lead', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'plano_lead',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
   },
 
   down: (queryInterface, Sequelize) => {

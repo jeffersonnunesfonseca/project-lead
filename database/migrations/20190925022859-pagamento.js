@@ -19,6 +19,26 @@ module.exports = {
         type: Sequelize.DATE
       }
     })
+    .then(() => queryInterface.addConstraint('pagamento', ['id_fatura'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_id_fatura', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'fatura',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
+    .then(() => queryInterface.addConstraint('pagamento', ['id_forma_pagamento'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_id_forma_pagamento', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'forma_pagamento',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
   },
 
   down: (queryInterface, Sequelize) => {

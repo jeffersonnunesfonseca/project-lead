@@ -70,8 +70,7 @@ module.exports = {
         type: Sequelize.STRING(200),
       },
       deletado: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0
+        type: Sequelize.BOOLEAN
       },
       data_criacao: {
         type: Sequelize.DATE,
@@ -80,8 +79,57 @@ module.exports = {
       qtd_dependente: {
         type: Sequelize.INTEGER,
       }
-
     })
+    .then(() => queryInterface.addConstraint('lead_imobiliario', ['id_tipo_imovel'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_id_tipo_imovel', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'tipo_imovel',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
+    .then(() => queryInterface.addConstraint('lead_imobiliario', ['id_status_imovel'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_status_imovel', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'status_imovel',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
+    .then(() => queryInterface.addConstraint('lead_imobiliario', ['id_renda_bruta'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_id_renda_bruta', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'renda_bruta',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
+    .then(() => queryInterface.addConstraint('lead_imobiliario', ['id_renda_bruta_parceiro'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_id_renda_bruta_parceiro', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'renda_bruta',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
+    .then(() => queryInterface.addConstraint('lead_imobiliario', ['id_estado_civil'], {
+      type: 'FOREIGN KEY',
+      name: 'fk_estado_civil', // useful if using queryInterface.removeConstraint
+      references: {
+        table: 'estado_civil',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'no action',
+    }))
 
   },
 
