@@ -21,26 +21,16 @@ module.exports = {
       }
 
     })
-    .then(() => queryInterface.addConstraint('usuario_lead_plano', ['id_usuario'], {
+    .then(() => queryInterface.addConstraint('lead_entregue', ['id_usuario_lead_entregue'], {
       type: 'FOREIGN KEY',
-      name: 'fk_id_usuario2', // useful if using queryInterface.removeConstraint
+      name: 'fk_id_usuario_lead_entregue', // useful if using queryInterface.removeConstraint
       references: {
-        table: 'usuario',
+        table: 'usuario_lead_entregue',
         field: 'id',
       },
       onDelete: 'no action',
       onUpdate: 'no action',
-    }))
-    .then(() => queryInterface.addConstraint('usuario_lead_plano', ['id_plano_lead'], {
-      type: 'FOREIGN KEY',
-      name: 'fk_id_plano_lead2', // useful if using queryInterface.removeConstraint
-      references: {
-        table: 'plano_lead',
-        field: 'id',
-      },
-      onDelete: 'no action',
-      onUpdate: 'no action',
-    }))
+    }))    
   },
 
   down: (queryInterface, Sequelize) => {
