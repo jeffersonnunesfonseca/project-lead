@@ -24,7 +24,7 @@ module.exports = {
     })
     .then(() => queryInterface.addConstraint('usuario_lead_entregue', ['id_usuario_lead_plano'], {
       type: 'FOREIGN KEY',
-      name: 'fk_id_usuario_lead_plano', // useful if using queryInterface.removeConstraint
+      name: 'fk_id_usuario_lead_plano_plano2', // useful if using queryInterface.removeConstraint
       references: {
         table: 'usuario_lead_plano',
         field: 'id',

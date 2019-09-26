@@ -18,7 +18,6 @@ module.exports = {
       id_plano_lead: {
         type: Sequelize.INTEGER,
       },
-          
       data_criacao: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP()')
@@ -46,7 +45,7 @@ module.exports = {
     }))
     .then(() => queryInterface.addConstraint('venda', ['id_plano_lead'], {
       type: 'FOREIGN KEY',
-      name: 'fk_id_plano_lead', // useful if using queryInterface.removeConstraint
+      name: 'fk_id_plano_lead_lead', // useful if using queryInterface.removeConstraint
       references: {
         table: 'plano_lead',
         field: 'id',

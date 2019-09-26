@@ -9,6 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      id_grupo_plano: {
+        type: Sequelize.INTEGER,
+      },
       nome: {
         allowNull: false,
         type: Sequelize.STRING,

@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      id_usuario_plano_lead: {
+      id_usuario_lead_plano: {
         type: Sequelize.INTEGER,
       },
       id_usuario: {
@@ -23,7 +23,6 @@ module.exports = {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP()')
       },
       data_atualizacao: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
       deletado: {
@@ -34,12 +33,12 @@ module.exports = {
       },
       cancelado: {
         type: Sequelize.BOOLEAN,
-      },
+      }
 
     })
     .then(() => queryInterface.addConstraint('contrato', ['id_usuario'], {
       type: 'FOREIGN KEY',
-      name: 'fk_id_usuario', // useful if using queryInterface.removeConstraint
+      name: 'fk_id_usuario_user', // useful if using queryInterface.removeConstraint
       references: {
         table: 'usuario',
         field: 'id',
