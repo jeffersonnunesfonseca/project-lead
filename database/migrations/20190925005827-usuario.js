@@ -12,7 +12,7 @@ module.exports = {
       id_tipo_usuario: {
         type: Sequelize.INTEGER,
       },
-      id_grupo_usuario: {
+      id_perfil_usuario: {
         type: Sequelize.INTEGER,
       },
       id_cidade: {
@@ -81,11 +81,11 @@ module.exports = {
         type: Sequelize.STRING(200)
       }
     })
-    .then(() => queryInterface.addConstraint('usuario', ['id_grupo_usuario'], {
+    .then(() => queryInterface.addConstraint('usuario', ['id_perfil_usuario'], {
       type: 'FOREIGN KEY',
-      name: 'fk_id_grupo_usuario', // useful if using queryInterface.removeConstraint
+      name: 'fk_id_perfil_usuario', // useful if using queryInterface.removeConstraint
       references: {
-        table: 'grupo_usuario',
+        table: 'perfil_usuario',
         field: 'id',
       },
       onDelete: 'no action',
