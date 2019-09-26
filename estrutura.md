@@ -20,3 +20,6 @@ node_modules/.bin/sequelize db:migrate
 drop tables migration
 node_modules/.bin/sequelize db:migrate:undo
 node_modules/.bin/sequelize db:migrate:undo:all
+
+associacoes model
+https://stackoverflow.com/questions/45501856/associate-different-models-using-sequelize
