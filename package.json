@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "yarn && NODE_ENV=development pm2 start && pm2 flush && pm2 logs lead-backend"
+    "start": "yarn && NODE_ENV=development && pm2 del all && pm2 start && pm2 flush && pm2 logs lead-backend"
   },
   "keywords": [],
   "author": "",
